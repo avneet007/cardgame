@@ -10,7 +10,7 @@ var cardFlipFlag=true;
 
 
 
-function loadGame(gameArray,greeting,timer,date,iteration,score,mode){
+function loadGame(gameArray,greeting,timer,date,iteration,score,gameTime,mode){
  
 
 document.getElementById("grettings").innerHTML = greeting;
@@ -20,15 +20,18 @@ document.getElementById("datedisplay").innerHTML = date;
      iteration = 0;
      score=0;
      startTimer();
+     showTime();
   }else{
 
-   document.getElementById("timerId").innerHTML= "Time : "+timer;
+   document.getElementById("timerId").innerHTML= timer;
+    document.getElementById("timedisplay").innerHTML= gameTime;
+
 
   }
   document.getElementById("attemptinner").innerHTML = iteration;
   document.getElementById("matchedinner").innerHTML = score;
 
-  showTime();
+  
 
   document.getElementById("gamecenter1").style.display= "flex";
 
@@ -45,7 +48,13 @@ function createGame(gameArray,mode){
 
   for(var i=0;i<gameArray.length;i++){
 
-       gameString += '<div><section class="container"  onClick="flipCard(\''+ i+'\')"><div class="card" id='+i+'><div class="front"></div><div class="back">'+gameArray[i]+'</div></div></section></div>'
+      if(mode=="w"){
+      gameString += '<div><section class="container"  onClick="flipCard(\''+ i+'\')"><div class="card" id='+i+'><div class="front"></div><div class="back">'+gameArray[i]+'</div></div></section></div>' 
+      }else{
+      gameString += '<div><section class="container"><div class="card flipped" id='+i+'><div class="front"></div><div class="back">'+gameArray[i]+'</div></div></section></div>' 
+   
+
+      }
 
 
         if(i==1){
@@ -132,6 +141,7 @@ function saveGame(){
     clearInterval(timeId);
 
     var object = new Object();
+    object.userName = localStorage.getItem("myUserName")
     object.greeting = document.getElementById("grettings").innerHTML;
     object.date= document.getElementById("datedisplay").innerHTML;
     object.gameArray = gameArray;

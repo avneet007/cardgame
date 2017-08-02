@@ -246,7 +246,24 @@ body {
 }
 	
 
-p span 
-{
-    display: block;
+.oldList{
+
+    width:781px;
+	min-height:409px;
+	margin:8% auto 0px;
+	overflow:auto;
+	padding:20px 0px;
+	font-size:22px;
+	color:#FFF;
+	font-weight:bold; 
+    background-image:url(../images/splashwrapper.png);
+	background-repeat:no-repeat;
+	list-style: none
+
+}
+
+.oldList li{
+
+    list-style: none
+
 }
