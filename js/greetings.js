@@ -1,26 +1,4 @@
 
-// To show Date of that purticula of that day 
-
-/*var d=new Date()
-var date=d.getDate()
-var month=d.getMonth()
-var year=d.getFullYear()
-
-document.getElementById('datedisplay').innerHTML='Date:'+ '&nbsp;'+ date + '/' + month +'/'+ year;*/
-
-
-// To show Time of that System
-
-/*var myVar = setInterval(function(){ myTimer() }, 1000);
-
-function myTimer() {
-    var d = new Date();
-    var t = d.toLocaleTimeString();
-    document.getElementById("timedisplay").innerHTML = 'Time:'+ '&nbsp;'+ t;
-}*/
-
-
-// To show Greetings
 var greetintStr="";
 
 
@@ -61,9 +39,7 @@ var greetintStr="";
  
  
 
- //document.getElementById("grettings").innerHTML="Hello"+ '&nbsp;' + '<span>' + userName + '</span>' +'&nbsp;' + day + " is a Beautiful day";
-
-
+ 
  greetintStr = "Hello"+ '&nbsp;' + '<span>' + name + '</span>' +'&nbsp;' + day + " is a Beautiful day";
 
 //console.log(greetintStr);

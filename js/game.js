@@ -1,3 +1,15 @@
+
+var statusCheckFlag=false;
+var storeFirstValue;
+var storeSecondValue;
+var attempt=0;
+var totalMatch=0;
+var firstCard;
+var secondCard;
+var cardFlipFlag=true;
+
+
+
 function loadGame(gameArray,greeting,timer,date,iteration,score,mode){
  
 
@@ -50,27 +62,89 @@ function createGame(gameArray,mode){
  document.getElementById("gamecenter1").innerHTML = gameString;
 
    
-   
-
-
-
 }
 
 
 
+function flipCard(index) {
 
+attempt =attempt+1; 
 
+document.getElementById("attemptinner").innerHTML = attempt;
+ 
 
+if (statusCheckFlag==false) {
+  
 
+  firstCard = document.getElementById(index);
+  storeFirstValue=gameArray[index];
+  statusCheckFlag=true;
+}
 
-function flipCard(i) {
+else {
+  
+  storeSecondValue=gameArray[index]
 
-  //alert("callling");
- if(document.getElementById(i).className=="card"){
-  document.getElementById(i).setAttribute("class","card flipped")
+   secondCard = document.getElementById(index);
+  if (storeFirstValue==storeSecondValue){
+    totalMatch = totalMatch+1;
+    statusCheckFlag=false;
+
+    if(totalMatch==gameArray.length/2){
+
+        document.getElementById("saveButtonId").style.display = "block";
+
+         stopTimer();
+    }
+
+    document.getElementById("matchedinner").innerHTML = totalMatch;
+
+  
+  }else{
+  // alert("not match") 
+
+   /*secondCard.setAttribute("class","card")
+   firstCard.setAttribute("class","card")*/
+
+   statusCheckFlag=false;
+  
+   //attempt++;
+  }
+
+}
+
+ if(document.getElementById(index).className=="card"){
+  document.getElementById(index).setAttribute("class","card flipped")
   }else{
 
-    document.getElementById(i).setAttribute("class","card")
+    document.getElementById(index).setAttribute("class","card")
   }
+
+
+
    // $('.card').toggleClass('flipped');
+}
+
+
+
+function saveGame(){
+
+    clearInterval(timeId);
+
+    var object = new Object();
+    object.greeting = document.getElementById("grettings").innerHTML;
+    object.date= document.getElementById("datedisplay").innerHTML;
+    object.gameArray = gameArray;
+    object.timer= document.getElementById("timerId").innerHTML;
+    object.gameTimer = document.getElementById("timedisplay").innerHTML;
+    object.attmpt = document.getElementById("attemptinner").innerHTML;
+    object.matched =document.getElementById("matchedinner").innerHTML; 
+
+    console.log(object);
+
+
+    savedgames.push(object);
+
+    localStorage.setItem("savedGameArry",JSON.stringify(savedgames));
+
 }

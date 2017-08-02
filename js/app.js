@@ -2,6 +2,7 @@ var dataArray=["Deepak","Anil","Deepak","Anil"]
 var gameArray  =[];
 var todayDate="";
 
+var savedgames=[];
 
 
 function splashout() { 
@@ -13,6 +14,11 @@ document.getElementById('weclometext').style.display= "none";
    
     localStorage.setItem("myUserName",userName);
     showgreeting(userName);
+    if(localStorage.getItem("savedGameArry")){
+
+    	savedgames =JSON.parse(localStorage.getItem('savedGameArry'))
+    }
+
 
 }
 

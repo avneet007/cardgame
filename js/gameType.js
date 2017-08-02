@@ -2,8 +2,7 @@
 
 function startNewGame(){
 
-   // alert("new game");
- 
+
    var todayDate = getTodaysDate();
   
    loadGame(gameArray,greetintStr,3,todayDate,10,2,"w");
@@ -18,8 +17,12 @@ function startNewGame(){
 }
 
 
-
 function viewOldGames(){
+
+    document.getElementById("choisebtn").style.display="none";
+    document.getElementById("oldGamelistId").style.display="block";
+    
+    console.log(savedgames);
 
 	// alert("old game");
 

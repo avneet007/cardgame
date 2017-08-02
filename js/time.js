@@ -1,10 +1,13 @@
 
+var timerId;
+var timeId;
+
 function startTimer() {
 
    var secondcounter=0;
 
 
-    var id = setInterval(
+    timerId = setInterval(
         function () {
 
             secondcounter = secondcounter + 1;
@@ -35,7 +38,7 @@ function startTimer() {
 
 function showTime(){
 
-         var id = setInterval(
+        timeId = setInterval(
         function () {
 
             var today = new Date();
@@ -49,5 +52,12 @@ function showTime(){
             
 
         }, 500);
+
+}
+
+
+function stopTimer(){
+
+ clearInterval(timerId);
 
 }
