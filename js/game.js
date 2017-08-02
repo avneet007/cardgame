@@ -1,60 +1,76 @@
+function loadGame(gameArray,greeting,timer,date,iteration,score,mode){
+ 
 
-var gameArray=[];
+document.getElementById("grettings").innerHTML = greeting;
+document.getElementById("datedisplay").innerHTML = date;
 
-function loadGame(){
+  if(mode=="w"){
+     iteration = 0;
+     score=0;
+     startTimer();
+  }else{
 
-var array = ["Avneet","Anil","Nilesh","Deepak","Avneet","Anil","Nilesh","Deepak"];
+   document.getElementById("timerId").innerHTML= "Time : "+timer;
 
-radomMyArray(array);
+  }
+  document.getElementById("attemptinner").innerHTML = iteration;
+  document.getElementById("matchedinner").innerHTML = score;
+
+  showTime();
+
+  document.getElementById("gamecenter1").style.display= "flex";
+
+  createGame(gameArray,mode);
+
+}
+
+
+
+function createGame(gameArray,mode){
+
+
+   var gameString="";
+
+  for(var i=0;i<gameArray.length;i++){
+
+       gameString += '<div><section class="container"  onClick="flipCard(\''+ i+'\')"><div class="card" id='+i+'><div class="front"></div><div class="back">'+gameArray[i]+'</div></div></section></div>'
+
+
+        if(i==1){
+
+          gameString +="<pre></pre>"
+        }
+
+      // if(i==gameArray.length-1){
+           
+
+      // }
+   }
+
+ document.getElementById("gamecenter1").innerHTML = gameString;
+
+   
+   
+
+
 
 }
 
 
 
-function radomMyArray(arr){
-  
-    if(arr.length>0){
-    var index = Math.floor(Math.random()*arr.length);
-   
-    gameArray.push(arr[index])
-    console.log(gameArray);
-    arr.splice(index,1);
 
 
-    radomMyArray(arr);
-    }else{
-
-    	//console.log("all done")
-
-    	LoadCards(gameArray);
-    }
-   
-
-}
 
 
-function LoadCards(gameArray){
 
-      
-       var htmlString="";
-      for(var i=0;i<gameArray.length;i++){
+function flipCard(i) {
 
-      	  htmlString += '<li onClick="boxValue(\''+ i+'\')">'+gameArray[i]+'</li>'
+  //alert("callling");
+ if(document.getElementById(i).className=="card"){
+  document.getElementById(i).setAttribute("class","card flipped")
+  }else{
 
-      	  if(i==3){
-      	  	htmlString  +="<br>";
-      	  }
-   
-     }
-   
-    document.getElementById("gameContainer").innerHTML=htmlString;
-     
-
-}
-
-
-function boxValue(a){
-
-
-	alert(gameArray[a])
+    document.getElementById(i).setAttribute("class","card")
+  }
+   // $('.card').toggleClass('flipped');
 }

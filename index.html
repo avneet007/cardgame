@@ -1,42 +1,136 @@
 <!DOCTYPE html>
-<html>
 <head>
-<title>Page Title</title>
- <link rel="stylesheet" type="text/css" href="css/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Card Game</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
 
 
 </head>
 
+
+
 <body>
 
-<div class="splash" id="splashScreen">
-     
-       <img onClick="startgame()"src="image/startbutton.png" height="100" width="100">
+<!-- Splash Start-->
+
+	<div id="mainwrapper">
+    	
+        	<div id="weclometext">
+        <div class="mainwrapper_text">
+        	<div id="welcomename"></div>
+            <input name="" id="splashinput" type="text" class="textboxstyle" placeholder="Enter your Name">
+            </br>
+           <input name="" type="Button"  onClick="splashout()"  value="Enter Now" class="enterbtn"  >
+        </div>
+        </div>
     
-</div>
+    			<!-- Choise Button Area Start-->
+    
+       <div id="choisebtn">
+           <div class="mainwrapper_text">
+        	<div id="question"></div>
+                      <input name="" type="Button"  onClick="startNewGame()"  value="Start New Game" class="startnewgame"  >
+                      <input name="" type="Button"  onClick="viewOldGames()"  value="View Old Games" class="viewoldgame"  >
+        </div>
+        
+        </div>
+    </div>
+    
+<!-- Splash End-->
 
 
 
-<h1 id="greetingId"> </h1>
-   
-<div class="right" id="timerId">
-	   
-</div>
+<!-- Main Game Start-->
+
+	
+    	<div id="gamewrapper">
+        
+        	<!-- Header Start-->
+            	   		<div class="header">
+                    	<div id="datedisplay"></div>
+                        <div id="grettings"></div>
+                        <div id="timedisplay"></div>
+                        <div class="clear"></div>
+                    </div>
+            
+            <!-- Header End-->
+            
+            
+            
+    <!-- Body Part Start-->
+            
+            
+            <div class="gamebody">
+            
+            		<div class="gameleft">
+                       	<div class="matched">MATCHED
+                        	<div id="matchedinner">0</div>
+                        </div>
+                        <div class="attempt">ATTEMPTED
+                        	<div id="attemptinner">0</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    
+                    
+                    <div class="gamecenter" >
+                    	<div id="gamecenter1" style="display:none">
+
+                           <!--  <section class="container" onclick="flipCard()">
+                              <div class="card" id="cardContainer">
+                                <div class="front">1</div>
+                                <div class="back">2</div>
+                              </div>
+                            </section> -->
 
 
 
+                        </div>
+                    	
+                    </div>
+                    
+                    
+                    
+                    <div class="gameright">YOUR TIME :
+                    
+                    	<div id="timerId"></div>
+                    
+                    </div>
+                    <div class="clear"></div>
+            
+            
+            </div>
+            
+            
+            
+        
+        
+        </div>
 
-<ul id="gameContainer" style="list-style: none;">
-
-      
-</ul>
-
-<script type="text/javascript" src="js/greeting.js"></script>
-<script type="text/javascript" src="js/timer.js"></script>
- <script type="text/javascript" src="js/game.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
 
 
+<!-- Main Game End-->
+<script  src="js/getDate.js"></script>
+<script  src="js/time.js"></script>
+<script type="text/javascript" src="js/time.js"></script>
+<script  src="js/game.js"></script>
+<script src="js/greetings.js"></script>
+<script src="js/randomizeArray.js"></script>
+<script src="js/app.js"></script>
+<script src="js/gameType.js"></script>
+
+<link href="css/flipcss.css" rel="stylesheet" type="text/css">
+
+<!-- <script src="js/splash.js"></script>
+
+
+
+<script src="js/greetings.js"></script>
+<script src="js/cardgame.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/flipbox.js"></script>
+ -->
 
 </body>
 </html>
