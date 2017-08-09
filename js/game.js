@@ -49,7 +49,7 @@ function createGame(gameArray,mode){
   for(var i=0;i<gameArray.length;i++){
 
       if(mode=="w"){
-      gameString += '<div><section class="container"  onClick="flipCard(\''+ i+'\')"><div class="card" id='+i+'><div class="front"></div><div class="back">'+gameArray[i]+'</div></div></section></div>' 
+      gameString += '<div><section class="container" id="container'+i+'"  onClick="flipCard(\''+ i+'\')"><div class="card" id='+i+'><div class="front"></div><div class="back">'+gameArray[i]+'</div></div></section></div>' 
       }else{
       gameString += '<div><section class="container"><div class="card flipped" id='+i+'><div class="front"></div><div class="back">'+gameArray[i]+'</div></div></section></div>' 
    
@@ -75,6 +75,8 @@ function createGame(gameArray,mode){
 
 
 
+var firstCardIndex;
+
 function flipCard(index) {
 
 attempt =attempt+1; 
@@ -84,18 +86,28 @@ document.getElementById("attemptinner").innerHTML = attempt;
 
 if (statusCheckFlag==false) {
   
-
+  firstCardIndex = index;
   firstCard = document.getElementById(index);
   storeFirstValue=gameArray[index];
   statusCheckFlag=true;
+  rotateCard(index)
 }
 
 else {
+
+
+ if(index==firstCardIndex){
+
+   console.log("its same card");
+ }else{
+  rotateCard(index)
   
   storeSecondValue=gameArray[index]
 
    secondCard = document.getElementById(index);
   if (storeFirstValue==storeSecondValue){
+
+    
     totalMatch = totalMatch+1;
     statusCheckFlag=false;
 
@@ -107,32 +119,65 @@ else {
     }
 
     document.getElementById("matchedinner").innerHTML = totalMatch;
+     removeClick("container"+firstCardIndex);
+     removeClick("container"+index);
 
-  
+    
   }else{
-  // alert("not match") 
-
-   /*secondCard.setAttribute("class","card")
-   firstCard.setAttribute("class","card")*/
 
    statusCheckFlag=false;
   
-   //attempt++;
+   
+   var interval =  setInterval(function(){  
+
+         rotateCard(firstCardIndex);
+         rotateCard(index);
+         clearInterval(interval);
+
+
+   },1000)
+
+
+
+  }
+
   }
 
 }
 
- if(document.getElementById(index).className=="card"){
+
+
+
+   // $('.card').toggleClass('flipped');
+}
+
+
+
+
+function rotateCard(index){
+
+
+  if(document.getElementById(index).className=="card"){
   document.getElementById(index).setAttribute("class","card flipped")
   }else{
 
     document.getElementById(index).setAttribute("class","card")
   }
 
-
-
-   // $('.card').toggleClass('flipped');
 }
+
+
+
+
+function removeClick(id){
+
+document.getElementById(id).removeAttribute("onClick")
+
+}
+
+
+
+
 
 
 
